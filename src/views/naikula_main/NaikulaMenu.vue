@@ -10,7 +10,7 @@
       preload="auto"
     >
       <source
-        src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-landscape-of-green-mountains-and-a-lake-847-large.mp4"
+        src="/src/assets/video/naikula_coming_soon.mp4"
         type="video/mp4"
       />
       Your browser does not support the video tag.
@@ -81,7 +81,7 @@ const seconds = ref(0);
 
 // target date is 14 days from now
 const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 14);
+targetDate.setDate(targetDate.getDate() + 20);
 
 let intervalId = null;
 

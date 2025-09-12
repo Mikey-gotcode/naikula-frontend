@@ -363,6 +363,11 @@
             <input v-model.number="groupBatchForm.group_size" type="number" min="1" class="w-full border rounded px-3 py-2 text-gray-700" />
           </div>
 
+           <div>
+            <label class="text-sm text-gray-600 block mb-1">Number of Tickets</label>
+            <input v-model.number="groupBatchForm.number_of_tickets" type="number" min="1" class="w-full border rounded px-3 py-2 text-gray-700" />
+          </div>
+
           <div>
             <label class="text-sm text-gray-600 block mb-1">Price (per group)</label>
             <input v-model.number="groupBatchForm.price" type="number" min="0" class="w-full border rounded px-3 py-2 text-gray-700" />
@@ -382,8 +387,8 @@
 </template>
 
 <script setup>
-import JSZip from "jszip"
-import { saveAs } from "file-saver"
+//import JSZip from "jszip"
+//import { saveAs } from "file-saver"
 import { ref, computed, onMounted } from 'vue'
 import apiClient, { getTickets, deleteTicket, generateBatch, generateBatchForGroups, useTicket, getEvents as apiGetEvents } from '@/api'
 
@@ -410,7 +415,7 @@ const batchForm = ref({ event_id: '', quantity: 10, price: 1000 })
 const batchLoading = ref(false)
 
 const showGenerateGroupModal = ref(false)
-const groupBatchForm = ref({ event_id: '', group_size: 5, price: 5000 })
+const groupBatchForm = ref({ event_id: '', group_size: 5, number_of_tickets:1 , price: 5000 })
 const groupBatchLoading = ref(false)
 
 /* HELPERS */

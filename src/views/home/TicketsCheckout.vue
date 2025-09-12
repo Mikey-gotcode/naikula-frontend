@@ -193,6 +193,20 @@ function goToDownload() {
   }
 }
 
+/**
+ * Normalize the server returned status into one of:
+ * 'paid' | 'partial' | 'pending' | 'failed' | 'unknown'
+ * Accepts many variants (success/successful/paid)
+ */
+function normalizeStatus(raw) {
+  if (!raw) return 'unknown'
+  const s = String(raw).toLowerCase()
+  if (['paid', 'success', 'successful'].includes(s)) return 'paid'
+  if (['partial'].includes(s)) return 'partial'
+  if (['pending', 'pending_payment', 'waiting'].includes(s)) return 'pending'
+  if (['failed', 'error', 'cancelled', 'cancelled_by_user'].includes(s)) return 'failed'
+  return 'unknown'
+}
 
 async function onSubmit() {
   if (!form.value.fullName || !form.value.email || !form.value.phone) {
@@ -219,15 +233,27 @@ async function onSubmit() {
     }
 
     const res = await initiatePayment(payload)
-    checkoutRequestId.value = res?.data?.payments?.[0]?.checkout_request_id
 
-    if (res.status == 200 && checkoutRequestId.value) {
-      // ✅ Save to Pinia payments store
-      payments.savePayment({
-        checkout_request_id: checkoutRequestId.value,
-        status: 'pending',
-        payload
-      })
+    // The backend returns an array of payment rows (one per seat) in res.data.payments
+    const returnedPayments = res?.data?.payments
+    const firstCheckoutId = returnedPayments && returnedPayments.length
+      ? returnedPayments[0]?.checkout_request_id
+      : (res?.data?.checkout_request_id || null)
+
+    checkoutRequestId.value = firstCheckoutId
+
+    if (res.status === 200 && checkoutRequestId.value) {
+      // If we received the full payments array, persist it as a batch aggregate
+      if (Array.isArray(returnedPayments) && returnedPayments.length) {
+        payments.savePaymentsBatch(checkoutRequestId.value, returnedPayments)
+      } else {
+        // fallback: store a minimal aggregate so the UI knows we started
+        payments.savePayment({
+          checkout_request_id: checkoutRequestId.value,
+          status: 'pending',
+          payload
+        })
+      }
 
       alert('Payment initiated — check your phone to complete payment.')
       startPolling(checkoutRequestId.value)
@@ -250,26 +276,44 @@ function startPolling(checkoutId) {
       if (!checkoutId) return
 
       const res = await checkPaymentStatus(checkoutId)
-      const { status: jsonStatus, payment } = res?.data ?? {}
-      const paymentStatus = (payment?.status ?? jsonStatus ?? '').toLowerCase()
+      const data = res?.data ?? {}
 
-      if (paymentStatus === 'successful') {
+      // Prefer aggregate overall_status, fall back to status or single payment row
+      const overallRaw = data.overall_status ?? data.status
+      const normalized = normalizeStatus(overallRaw)
+
+      // If backend returned payments array, persist whole batch
+      if (Array.isArray(data.payments) && data.payments.length) {
+        payments.savePaymentsBatch(checkoutId, data.payments)
+      }
+
+      // If backend sent a single payment object, merge it
+      if (data.payment) {
+        const single = data.payment
+        // backend might use 'status' or 'payment.status'
+        const singleStatus = normalizeStatus(single.status ?? single.payment_status ?? overallRaw)
+        payments.savePayment({ ...single, checkout_request_id: checkoutId })
+        payments.updatePaymentStatus(checkoutId, normalized, { last_polled: new Date().toISOString() })
+      } else {
+        // update aggregate overall status only
+        payments.updatePaymentStatus(checkoutId, normalized, { last_polled: new Date().toISOString() })
+      }
+
+      // Decide outcomes based on normalized overall status
+      if (normalized === 'paid') {
         stopPolling()
         if (typeof cart.saveToCookie === 'function') cart.saveToCookie()
 
-        // ✅ update store with final success state
-        payments.updatePaymentStatus(checkoutId, 'successful', payment)
-
-        router.push({ 
-          name: 'PreviewDownload', 
-          params: { id: checkoutId } 
+        // navigate to preview / download page
+        router.push({
+          name: 'PreviewDownload',
+          params: { id: checkoutId }
         })
-      } else if (paymentStatus === 'failed') {
+      } else if (normalized === 'failed') {
         stopPolling()
-        payments.updatePaymentStatus(checkoutId, 'failed', payment)
         alert('Payment failed. Please try again.')
       }
-      // else: pending — keep polling
+      // else: pending/partial/unknown -> keep polling
     } catch (err) {
       if (err?.response?.status === 404) {
         stopPolling()

@@ -52,6 +52,7 @@ export const getEvents = () => api.get('/events')
 export const getEvent = (id) => api.get(`/events/${id}`)
 export const getITickets = (id) => api.get('/tickets')
 export const getITicketsByEvent = (eventId) => api.get(`/tickets/event/${eventId}`)
+export const getITicketsByEventAndStatus = (eventId) => api.get(`/tickets/events/${eventId}`)
 
 /*
 |--------------------------------------------------------------------------

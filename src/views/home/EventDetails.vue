@@ -48,7 +48,7 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div
                   v-for="tk in singleTickets"
-                  :key="tk.id"
+                  :key="tk._representativeId"
                   class="bg-black/30 p-4 rounded-lg border border-gray-800"
                 >
                   <div class="flex justify-between items-start">
@@ -67,7 +67,7 @@
                     <div class="flex items-center space-x-2">
                       <button @click="decrement(tk._representativeId)" class="px-2 py-1 bg-gray-800 rounded disabled:opacity-50" :disabled="qtyFor(tk._representativeId) <= 0">-</button>
                       <div class="px-4 py-1 bg-gray-800 rounded w-16 text-center">{{ qtyFor(tk._representativeId) }}</div>
-                      <button @click="increment(tk._representativeId)" class="px-2 py-1 bg-gray-800 rounded">+</button>
+                      <button @click="increment(tk._representativeId)" class="px-2 py-1 bg-gray-800 rounded disabled:opacity-50" :disabled="qtyFor(tk._representativeId) >= 1">+</button>
                     </div>
 
                     <div class="text-sm text-gray-300">
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="text-right">
-                      <div class="text-lg font-bold">KES {{ displayPrice(tk).toLocaleString()}}</div>
+                      <div class="text-lg font-bold">KES {{ displayPriceUI(tk).toLocaleString()}}</div>
                       <div class="text-xs text-gray-400">Per group</div>
                     </div>
                   </div>
@@ -153,23 +153,16 @@
 
 <script setup>
 /**
- * EventDetail.vue (corrected)
+ * EventDetail.vue
  *
- * Key fixes:
- *  - mapTicket now recognizes group tickets by `group_id` (not only group_size)
- *  - groupTickets dedupes by group_id when present (else falls back to group_size or unique id)
- *  - representative id assigned per group (used for qty map)
- *
- * Requirements:
- *  - `getEvent`, `getITicketsByEvent`, `initiatePayment` exist in '@/api'
- *  - Pinia cart store at '@/store/cart' exposing useCartStore() with these methods/properties:
- *      - loadFromCookie(), saveToCookie(), addOrUpdate(item), items, totalAmount, totalCount, asPayload
- *    (Adjust store names if yours differ.)
+ * This version of the file correctly groups tickets of the same type
+ * (single or group by size) to allow incrementing the quantity for
+ * that ticket type, rather than for individual ticket IDs.
  */
 
 import { ref, computed, onMounted, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getEvent, getITicketsByEvent, initiatePayment } from '@/api'
+import { getEvent, getITicketsByEventAndStatus, initiatePayment } from '@/api'
 import { useCartStore } from '@/store/cart'
 
 const route = useRoute()
@@ -189,7 +182,7 @@ const event = ref({})
 const rawTickets = ref([]) // raw array from API
 const placeholderImage = '/src/assets/images/naikulaposter.png'
 
-// qty map keyed by representative id (for single tickets we use the ticket id; for group tickets we use representative id)
+// qty map keyed by a representative key (e.g., ticket ID or group size)
 const qtyMap = ref({})
 
 // normalize and mapping helpers
@@ -223,9 +216,8 @@ function mapEvent(e) {
 }
 
 /**
- * CORRECTED mapTicket:
- * - treats ticket as a group if group_id exists OR group_size > 0 OR explicit flag
- * - preserves group_id and group_size fields
+ * mapTicket:
+ * - normalizes ticket data and determines if it's a group ticket
  */
 function mapTicket(t) {
   const groupSize = t.group_size ?? null
@@ -244,7 +236,7 @@ function mapTicket(t) {
     label: t.label ?? t.title ?? t.name ?? null,
     price: Number(t.price ?? t.amount ?? t.total ?? 0) || 0,
     status: (t.status ?? (t.used !== undefined ? (t.used ? 'used' : 'unused') : null)) ?? null,
-    group_id: hasGroupId ?? null,      // Keep original group_id if present
+    group_id: hasGroupId ?? null,
     group_size: groupSize,
     is_group: isGroup,
     valid_on: t.valid_on ?? t.date ?? t.starts_at ?? null,
@@ -261,7 +253,7 @@ async function fetchAll() {
   try {
     const [evRes, tkRes] = await Promise.allSettled([
       getEvent(eventId),
-      getITicketsByEvent(eventId)
+      getITicketsByEventAndStatus(eventId)
     ])
 
     if (evRes.status === 'fulfilled') {
@@ -296,59 +288,49 @@ onMounted(fetchAll)
 /* Representative building & computed lists */
 
 /**
- * singleTickets returns ONE representative single ticket (earliest by valid_on/created)
+ * singleTickets returns one representative ticket for each unique single ticket type.
  */
 const singleTickets = computed(() => {
-  const singles = rawTickets.value.filter(t => !t.is_group)
-  if (!singles.length) return []
-  singles.sort((a, b) => {
-    const da = a.valid_on ? new Date(a.valid_on).getTime() : (a.raw?.created_at ? new Date(a.raw.created_at).getTime() : Infinity)
-    const db = b.valid_on ? new Date(b.valid_on).getTime() : (b.raw?.created_at ? new Date(b.raw.created_at).getTime() : Infinity)
-    return (da || Infinity) - (db || Infinity)
-  })
-  const rep = { ...singles[0] }
-  rep._representativeId = rep.id
-  return [rep]
-})
+  const singles = rawTickets.value.filter(t => !t.is_group);
+  const uniqueTickets = new Map();
 
-/**
- * groupTickets: dedupe by group_id when present, otherwise by group_size, otherwise by ticket id
- * - each group entry has groupKey (string) and _representativeId (ticket id)
- */
-const groupTickets = computed(() => {
-  const groups = rawTickets.value.filter(t => t.is_group)
-  const map = new Map()
-
-  for (const t of groups) {
-    // prefer group_id if present; else size-based key; else unique fallback
-    const key = t.group_id ? String(t.group_id) : (t.group_size ? `size_${t.group_size}` : `g_${t.id}`)
-
-    if (!map.has(key)) {
-      // pick this ticket as representative for the group
-      const copy = { ...t, groupKey: key, _representativeId: t.id }
-      map.set(key, copy)
-    } else {
-      // optionally prefer the representative with earliest valid_on
-      const existing = map.get(key)
-      const exDate = existing.valid_on ? new Date(existing.valid_on).getTime() : Infinity
-      const tDate = t.valid_on ? new Date(t.valid_on).getTime() : Infinity
-      if (tDate < exDate) {
-        map.set(key, { ...t, groupKey: key, _representativeId: t.id })
-      }
+  for (const t of singles) {
+    if (!uniqueTickets.has(t.id)) {
+      uniqueTickets.set(t.id, { ...t, _representativeId: t.id });
     }
   }
+  return Array.from(uniqueTickets.values());
+});
 
-  return Array.from(map.values())
-})
+
+/**
+ * groupTickets: dedupe by group_size.
+ * A single representative ticket is chosen for each unique group size.
+ */
+const groupTickets = computed(() => {
+  const groups = rawTickets.value.filter(t => t.is_group);
+  const uniqueGroups = new Map();
+
+  for (const t of groups) {
+    const key = t.group_size ? `group_${t.group_size}` : t.group_id || t.id;
+
+    if (!uniqueGroups.has(key)) {
+      uniqueGroups.set(key, { ...t, groupKey: key, _representativeId: key });
+    }
+  }
+  return Array.from(uniqueGroups.values());
+});
 
 /* Build qtyMap keys for all representative ids so UI can bind safely */
 function buildRepresentativeKeys() {
-  const keys = []
-  singleTickets.value.forEach(t => keys.push(t._representativeId))
-  groupTickets.value.forEach(t => keys.push(t._representativeId))
-  rawTickets.value.forEach(t => keys.push(t.id))
+  const keys = [];
+  singleTickets.value.forEach(t => keys.push(t._representativeId));
+  groupTickets.value.forEach(t => keys.push(t._representativeId));
+
   for (const k of Array.from(new Set(keys))) {
-    if (!(k in qtyMap.value)) qtyMap.value[k] = 0
+    if (!(k in qtyMap.value)) {
+      qtyMap.value[k] = 0;
+    }
   }
 }
 
@@ -361,6 +343,7 @@ function ticketValidOn(tk) {
   return String(tk.valid_on)
 }
 function displayPrice(tk) { return Number(tk.price || 0) }
+function displayPriceUI(tk) { return Number(tk.price * tk.group_size || 0) }
 
 /* qty helpers */
 function qtyFor(repId) { return qtyMap.value[repId] ?? 0 }
@@ -379,13 +362,11 @@ function addToCart(tk) {
   const groupSize = Number(tk.group_size) || 1
   const price = displayPrice(tk)
   const ticketsConsumed = qty * groupSize
-  // choose a unique ticket_key: prefer groupKey for group entries, else repId
   const ticket_key = tk.groupKey ?? repId
 
-  // call store method (store is expected to persist to cookie inside)
   cartStore.addOrUpdate({
     ticket_key,
-    ticket_id: repId,
+    ticket_id: tk.id, // Store original ticket ID for payload
     label: ticketLabel(tk),
     qty,
     unit_price: price,
@@ -394,17 +375,14 @@ function addToCart(tk) {
     event_id: event.value.id
   })
 
-  // reset UI qty
   qtyMap.value[repId] = 0
 
-  // ensure cookie persistence if available
   if (typeof cartStore.saveToCookie === 'function') cartStore.saveToCookie()
 
   alert('Added to cart')
 }
 
 function goToCart() {
-  // push a cart/checkout route - here we navigate to a named route EventCheckout
   router.push({ name: 'EventCheckout', query: { eventId: event.value.id } }).catch(() => {})
 }
 
@@ -429,7 +407,7 @@ async function quickBuy(tk) {
   const groupSize = Number(tk.group_size) || 1
   const payload = {
     items: [{
-      ticket_id: repId,
+      ticket_id: tk.id, // Use original ticket ID
       qty,
       unit_price: displayPrice(tk),
       group_size: groupSize,

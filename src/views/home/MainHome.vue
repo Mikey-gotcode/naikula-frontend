@@ -8,20 +8,20 @@
         <div class="flex items-center space-x-2">
           <img
             src="/src/assets/icons/naikulalogo.png"
-            alt="Mookh Logo"
+            alt="Naikula logo"
             class="rounded-full w-8 h-8 md:w-10 md:h-10"
           />
           <span class="text-xl md:text-2xl font-bold">NAIKULA.</span>
         </div>
         <div class="hidden md:flex items-center space-x-6 text-sm text-gray-400">
-          <a href="#" class="hover:text-white">LEARN MORE</a>
+          <router-link to="/" class="[hover:text-white]">HOME</router-link>
           <router-link to="/login" class="[hover:text-white]">LOGIN</router-link>
         </div>
       </div>
       <div class="flex items-center space-x-4">
-        <button class="text-gray-400 hover:text-white">🔍</button>
-        <a href="#" class="text-gray-400 hover:text-white">🛒</a>
-        <button class="text-gray-400 hover:text-white">👤</button>
+        <!-- <button class="text-gray-400 hover:text-white">🔍</button> -->
+        <router-link to="/checkout/:id" class="[hover:text-white]">🛒</router-link>
+        <!-- <button class="text-gray-400 hover:text-white">👤</button> -->
       </div>
     </header>
 
@@ -30,9 +30,9 @@
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
         <div class="flex items-center space-x-4 mb-4 md:mb-0">
-          <div class="bg-gray-800 text-gray-300 py-2 px-6 rounded-full cursor-pointer hover:bg-gray-700">
+          <!-- <div class="bg-gray-800 text-gray-300 py-2 px-6 rounded-full cursor-pointer hover:bg-gray-700">
             Featured Staff Picks
-          </div>
+          </div> -->
           <div class="bg-yellow-400 text-gray-900 py-2 px-6 rounded-full font-semibold cursor-pointer">
             Events
           </div>
@@ -44,7 +44,7 @@
             Events: <span class="text-white font-semibold">{{ events.length }}</span>
           </div>
           <div class="text-sm text-gray-400">
-            Tickets: <span class="text-white font-semibold">{{ totalTickets }}</span>
+            Available Tickets: <span class="text-white font-semibold">{{ totalTickets }}</span>
           </div>
         </div>
       </div>
@@ -52,31 +52,13 @@
       <!-- Filters -->
       <div class="bg-gray-800 rounded-lg p-4 mb-12 flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
         <div class="flex-grow grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <select v-model="filters.country" class="bg-gray-700 text-white p-3 rounded-lg border border-gray-600">
-            <option value="all">COUNTRY: ALL</option>
-            <option value="kenya">Kenya</option>
-            <option value="uganda">Uganda</option>
-          </select>
+          
 
-          <div class="flex items-center bg-gray-700 rounded-lg p-1.5 border border-gray-600">
+          <div class="flex items-center bg-gray-700 rounded-lg p-1.5 border border-gray-600 w-full">
             <input type="date" v-model="filters.startDate" class="bg-transparent text-white p-1.5 w-full" />
             <span class="text-gray-400 mx-2">→</span>
             <input type="date" v-model="filters.endDate" class="bg-transparent text-white p-1.5 w-full" />
           </div>
-
-          <select v-model="filters.eventType" class="bg-gray-700 text-white p-3 rounded-lg border border-gray-600">
-            <option value="all">EVENT TYPE: ALL</option>
-            <option value="workshop">Workshop</option>
-            <option value="conference">Conference</option>
-            <option value="music">Music</option>
-            <option value="theatre">Theatre</option>
-          </select>
-
-          <select v-model="filters.sortBy" class="bg-gray-700 text-white p-3 rounded-lg border border-gray-600">
-            <option value="upcoming">SORT BY: UPCOMING</option>
-            <option value="date">Date</option>
-            <option value="popular">Popularity</option>
-          </select>
         </div>
 
         <div class="flex items-center space-x-4">
@@ -121,9 +103,9 @@
             </div>
 
             <div class="flex items-center justify-between mt-4">
-              <div class="text-sm text-gray-300">
+              <!-- <div class="text-sm text-gray-300">
                 Tickets: <span class="text-white font-semibold">{{ ticketsByEvent(event.id) }}</span>
-              </div>
+              </div> -->
 
               <button @click="openEvent(event)"
                 class="bg-yellow-400 text-gray-900 px-3 py-1 rounded-md font-semibold">
@@ -143,7 +125,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import { getEvents, getITickets } from "@/api";
+import { getEvents,getITickets, getITicketsByEventAndStatus } from "@/api";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -154,7 +136,7 @@ const loading = ref(true);
 const error = ref(false);
 const errorMessage = ref(null);
 
-const placeholderImage = "https://placehold.co/600x400/364234/EFEFEF?text=No+Image";
+const placeholderImage = "/src/assets/images/naikulaposter.png";
 
 /**
  * Normalize helpers
