@@ -11,7 +11,7 @@ export const useAuthStore = defineStore('auth', {
     async login(credentials) {
       try {
         const res = await axios.post(
-          (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000') + '/api/login',
+          (import.meta.env.VITE_API_BASE_URL || 'https://www.naikula.co.ke') + '/api/login',
           credentials
         )
 
@@ -30,7 +30,7 @@ export const useAuthStore = defineStore('auth', {
     async register(data) {
       try {
         const res = await axios.post(
-          (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000') + '/api/register',
+          (import.meta.env.VITE_API_BASE_URL || 'https://www.naikula.co.ke') + '/api/register',
           data
         )
 
@@ -49,7 +49,7 @@ export const useAuthStore = defineStore('auth', {
     logout() {
       try {
         axios.post(
-          (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000') + '/api/logout',
+          (import.meta.env.VITE_API_BASE_URL || 'https://www.naikula.co.ke') + '/api/logout',
           {},
           { headers: { Authorization: this.token ? `Bearer ${this.token}` : undefined } }
         ).catch(() => {})

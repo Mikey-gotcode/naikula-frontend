@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getToken } from '@/store/auth' // adjust if your store path differs
 
-const BASE = import.meta.env.VITE_API_BASE_URL || 'https://www.naikula.co.ke/api'
+const BASE = import.meta.env.VITE_API_BASE_URL || 'https://www.naikula.co.ke'
 
 const api = axios.create({
   baseURL: `${BASE}/api`,
