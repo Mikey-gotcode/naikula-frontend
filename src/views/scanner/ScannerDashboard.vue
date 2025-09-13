@@ -299,77 +299,72 @@ function ensureInjectedElementsVisible() {
  * - robustly pick device id (device.id || device.deviceId || device)
  */
 const startScanning = async () => {
-  // security check: getUserMedia only works on secure contexts or localhost
-  if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-    scanResult.value = {
-      status: 'invalid',
-      message: 'Insecure origin',
-      details: 'Camera access requires HTTPS or localhost. Serve the app via localhost or HTTPS.'
-    }
-    return
-  }
-
-  loading.value = true
-  scanResult.value = null
-
-  try {
-    // create (or clear) instance
-    if (!html5QrCode) {
-      html5QrCode = new Html5Qrcode('reader', { verbose: false })
-    } else {
-      // Clear any previous DOM inserted by prior runs
-      try { html5QrCode.clear() } catch (e) { /* ignore */ }
+    // security check: getUserMedia only works on secure contexts or localhost
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        scanResult.value = {
+            status: 'invalid',
+            message: 'Insecure origin',
+            details: 'Camera access requires HTTPS or localhost. Serve the app via localhost or HTTPS.'
+        }
+        return
     }
 
-    const devices = await Html5Qrcode.getCameras()
-    if (!devices || devices.length === 0) {
-      throw new Error('No camera devices found')
+    loading.value = true
+    scanResult.value = null
+
+    try {
+        // create (or clear) instance
+        if (!html5QrCode) {
+            html5QrCode = new Html5Qrcode('reader', { verbose: false })
+        } else {
+            // Clear any previous DOM inserted by prior runs
+            try { html5QrCode.clear() } catch (e) { /* ignore */ }
+        }
+
+        const qrCodeConfig = {
+            fps: 10,
+            qrbox: { width: 250, height: 250 },
+            // Directly use facingMode for robust mobile camera selection
+            formats: [Html5Qrcode.QrCode],
+            facingMode: 'environment'
+        }
+
+        // Check if `facingMode` is supported and available
+        try {
+            await html5QrCode.start({ facingMode: "environment" }, qrCodeConfig,
+                (decodedText, decodedResult) => { handleScan(decodedText) },
+                (err) => { /* non-fatal scan errors */ }
+            );
+        } catch (e) {
+            console.warn('FacingMode "environment" failed, falling back to default camera.', e);
+            // Fallback to a simpler start if "environment" facing mode is not supported
+            const devices = await Html5Qrcode.getCameras();
+            if (devices && devices.length > 0) {
+                await html5QrCode.start(devices[0].id, qrCodeConfig,
+                    (decodedText, decodedResult) => { handleScan(decodedText) },
+                    (err) => { /* non-fatal scan errors */ }
+                );
+            } else {
+                throw new Error('No camera devices found and facingMode failed.');
+            }
+        }
+
+        // After start, ensure the injected elements are visible
+        ensureInjectedElementsVisible()
+
+        cameraActive.value = true
+        loading.value = false
+        console.info('Scanner started.')
+    } catch (err) {
+        console.error('Camera access / start failed:', err)
+        loading.value = false
+        cameraActive.value = false
+        scanResult.value = {
+            status: 'invalid',
+            message: 'Camera access failed',
+            details: err?.message || String(err)
+        }
     }
-
-    // pick preferred camera: look for back/rear/environment
-    let chosen = devices[0]
-    for (const d of devices) {
-      const label = (d.label || '').toLowerCase()
-      if (label.includes('back') || label.includes('rear') || label.includes('environment')) {
-        chosen = d
-        break
-      }
-    }
-
-    // support both shapes: {id, label} or {deviceId, label} or plain string
-    const cameraId = chosen.id ?? chosen.deviceId ?? chosen
-    lastCameraId = cameraId
-
-    // start scanner
-    await html5QrCode.start(
-      cameraId,
-      { fps: 10, qrbox: { width: 250, height: 250 }, facingMode: "environment" },
-      (decodedText, decodedResult) => {
-        // handle scan on the next tick
-        handleScan(decodedText)
-      },
-      (err) => {
-        // non-fatal scanning errors (frame decode failures)
-        // console.debug('scan decode error', err)
-      }
-    )
-
-    // After start, ensure the injected elements are visible
-    ensureInjectedElementsVisible()
-
-    cameraActive.value = true
-    loading.value = false
-    console.info('Scanner started with cameraId:', cameraId)
-  } catch (err) {
-    console.error('Camera access / start failed:', err)
-    loading.value = false
-    cameraActive.value = false
-    scanResult.value = {
-      status: 'invalid',
-      message: 'Camera access failed',
-      details: err?.message || String(err)
-    }
-  }
 }
 
 /**
