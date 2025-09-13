@@ -111,30 +111,30 @@
           <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0714.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
-          <div class="w-full h-full flex-shrink-0">
+          <!-- <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0728.webp" alt="Event" class="w-full h-full object-cover" />
-          </div>
+          </div> -->
           <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0762.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
-          <div class="w-full h-full flex-shrink-0">
+          <!-- <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
-          </div>
+          </div> -->
           <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0792.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
-          <div class="w-full h-full flex-shrink-0">
+          <!-- <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0823.webp" alt="Event" class="w-full h-full object-cover" />
-          </div>
+          </div> -->
           <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/IMG_3430.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
-          <div class="w-full h-full flex-shrink-0">
+          <!-- <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0841.webp" alt="Event" class="w-full h-full object-cover" />
-          </div>
+          </div> -->
         </div>
       </div>
 
