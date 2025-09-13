@@ -26,7 +26,7 @@
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row items-center gap-12">
           <div class="md:w-1/2" data-aos="fade-right">
-            <img src="/src/assets/images/naikulaphotos/IMG_3246.jpg" alt="Grilling Experience" class="rounded-lg shadow-2xl w-full" />
+            <img src="/src/assets/images/naikulaphotos/IMG_3246.webp" alt="Grilling Experience" class="rounded-lg shadow-2xl w-full" />
           </div>
           <div class="md:w-1/2" data-aos="fade-left">
             <h2 class="text-4xl font-bold mb-6">The Art of <span class="flame-text">Smoking</span></h2>
@@ -51,7 +51,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" ref="galleryRoot">
           <!-- Gallery items -->
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
-            <img src="/src/assets/images/naikulaphotos/IMG_3403.jpg" alt="Smoked Ribs" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/IMG_3403.webp" alt="Smoked Ribs" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Smoked Ribs</h3>
               <p class="text-gray-400">Slow-cooked to perfection with our signature rub</p>
@@ -59,7 +59,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
-            <img src="/src/assets/images/naikulaphotos/DSC_0803.JPG" alt="Grilled Vegetables" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/DSC_0803.webp" alt="Grilled Vegetables" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">BBQ Sauce Dipped Choma Sausages</h3>
               <p class="text-gray-400">Seasonal produce with herb-infused oils</p>
@@ -67,7 +67,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="300">
-            <img src="/src/assets/images/naikulaphotos/IMG_3347.jpg" alt="Pulled Pork" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/IMG_3347.webp" alt="Pulled Pork" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Smoked Chicken</h3>
               <p class="text-gray-400">12-hour smoked pork with tangy barbecue sauce</p>
@@ -75,7 +75,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="400">
-            <img src="/src/assets/images/naikulaphotos/DSC_0802.JPG" alt="Smoked Brisket" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/DSC_0802.webp" alt="Smoked Brisket" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Smoked Brisket</h3>
               <p class="text-gray-400">Texas-style beef brisket with dry rub</p>
@@ -83,7 +83,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="500">
-            <img src="/src/assets/images/naikulaphotos/IMG_3388.jpg" alt="Grilled Seafood" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/IMG_3388.webp" alt="Grilled Seafood" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Smoked Pork</h3>
               <p class="text-gray-400">Fresh catch with citrus marinade</p>
@@ -91,7 +91,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="600">
-            <img src="/src/assets/images/naikulaphotos/IMG_3341.jpg" alt="Wood-fired Pizza" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/IMG_3341.webp" alt="Wood-fired Pizza" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Signature Seasoned Spuds</h3>
               <p class="text-gray-400">Neapolitan style with house-made dough</p>
@@ -109,31 +109,31 @@
       <div class="absolute inset-0 overflow-hidden">
         <div class="events-carousel absolute inset-0 flex transition-transform duration-1000" ref="eventsCarouselRef">
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0714.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0714.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0728.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0728.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0723.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0762.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0762.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0723.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0792.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0792.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0823.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0823.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/IMG_3430.jpg" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/IMG_3430.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img src="/src/assets/images/naikulacarousel/DSC_0841.JPG" alt="Event" class="w-full h-full object-cover" />
+            <img src="/src/assets/images/naikulacarousel/DSC_0841.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -674,7 +674,7 @@ h1, h2, h3, h4 {
 }
 
 .parallax-bg {
-  background-image: url('/src/assets/images/naikulaphotos/chickenwithspudskachumbari.JPG');
+  background-image: url('/src/assets/images/naikulaphotos/chickenwithspudskachumbari.webp');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
