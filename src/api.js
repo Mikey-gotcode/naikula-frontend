@@ -93,7 +93,7 @@ export const useTicket = (data) => api.post('/tickets/use', data);
  * @param {number} interval - polling interval in ms
  * @param {number} maxAttempts - max number of polls
  */
-export const pollPaymentStatus = async (checkoutRequestId, interval = 5000, maxAttempts = 12) => {
+export const pollPaymentStatus = async (checkoutRequestId, interval = 3000, maxAttempts = 6) => {
   let attempts = 0
   return new Promise((resolve, reject) => {
     const timer = setInterval(async () => {

@@ -1,4 +1,3 @@
-<!-- src/components/EventCheckout.vue -->
 <template>
   <div class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-tr from-black to-gray-900">
     <div class="max-w-4xl w-full">
@@ -105,7 +104,7 @@
 
                 <button type="button" @click="clearCart" class="px-6 py-4 rounded-lg border border-gray-700">Clear</button>
                   <button
-                          v-if="payments.latestCheckoutId"
+                          v-if="payments.lastPayment?.overall_status === 'paid'"
                           type="button"
                           @click="goToDownload"
                           class="px-6 py-4 rounded-lg bg-yellow-500 text-black font-semibold hover:bg-yellow-400 transition"
