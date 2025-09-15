@@ -151,7 +151,7 @@ import { usePaymentsStore } from '@/store/payments.js'
 import { initiatePayment, checkPaymentStatus } from '@/api'
 
 const router = useRouter()
-const eventTitle = 'Summer Music Festival'
+const eventTitle = 'Naikula Cookout !'
 const cart = useCartStore()
 const payments = usePaymentsStore()
 
