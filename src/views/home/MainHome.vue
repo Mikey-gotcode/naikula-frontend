@@ -136,7 +136,7 @@ const loading = ref(true);
 const error = ref(false);
 const errorMessage = ref(null);
 
-const placeholderImage = "/src/assets/images/naikulaposter.png";
+const placeholderImage = "/src/assets/images/naikulaposter.webp";
 
 /**
  * Normalize helpers
