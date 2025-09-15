@@ -31,7 +31,7 @@
           <div class="md:w-1/2" data-aos="fade-left">
             <h2 class="text-4xl font-bold mb-6">The Art of <span class="flame-text">Smoking</span></h2>
             <p class="text-gray-300 mb-6 text-lg">
-              At Naikula, we've mastered the ancient art of smoking meats and vegetables over slow-burning wood fires.
+              At Naikula, we've mastered the ancient art of smoking meats over slow-burning wood fires.
               Our chefs combine traditional techniques with modern innovation to create unforgettable flavors.
             </p>
             <p class="text-gray-300 mb-8 text-lg">
@@ -54,7 +54,7 @@
             <img src="/src/assets/images/naikulaphotos/IMG_3403.webp" alt="Smoked Ribs" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Smoked Ribs</h3>
-              <p class="text-gray-400">Slow-cooked to perfection with our signature rub</p>
+              <p class="text-gray-400">Pork ribs slow-cooked to perfection with our signature rub</p>
             </div>
           </div>
 
@@ -62,39 +62,39 @@
             <img src="/src/assets/images/naikulaphotos/DSC_0803.webp" alt="Grilled Vegetables" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">BBQ Sauce Dipped Choma Sausages</h3>
-              <p class="text-gray-400">Seasonal produce with herb-infused oils</p>
+              <p class="text-gray-400">Smoky choma sausages dipped in our signature BBQ sauce</p>
             </div>
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="300">
             <img src="/src/assets/images/naikulaphotos/IMG_3347.webp" alt="Pulled Pork" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
-              <h3 class="text-2xl font-bold mb-2">Smoked Chicken</h3>
-              <p class="text-gray-400">12-hour smoked pork with tangy barbecue sauce</p>
+              <h3 class="text-2xl font-bold mb-2">Smoky Vibes 254..🔥🇰🇪</h3>
+              <p class="text-gray-400">Crispy skinned, smoked to perfections chicken served with our signature sauces </p>
             </div>
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="400">
-            <img src="/src/assets/images/naikulaphotos/DSC_0802.webp" alt="Smoked Brisket" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/IMG_3370.webp" alt="Smoked Brisket" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
-              <h3 class="text-2xl font-bold mb-2">Smoked Brisket</h3>
-              <p class="text-gray-400">Texas-style beef brisket with dry rub</p>
+              <h3 class="text-2xl font-bold mb-2">Family combo meal</h3>
+              <p class="text-gray-400">Full chicken with serving of golden brown spuds</p>
             </div>
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="500">
             <img src="/src/assets/images/naikulaphotos/IMG_3388.webp" alt="Grilled Seafood" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
-              <h3 class="text-2xl font-bold mb-2">Smoked Pork</h3>
-              <p class="text-gray-400">Fresh catch with citrus marinade</p>
+              <h3 class="text-2xl font-bold mb-2">Hog Father🐖</h3>
+              <p class="text-gray-400">Trust the flavour of the Hog Father🐖..trust naikula!🔥</p>
             </div>
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="600">
-            <img src="/src/assets/images/naikulaphotos/IMG_3341.webp" alt="Wood-fired Pizza" class="w-full h-64 object-cover" />
+            <img src="/src/assets/images/naikulaphotos/IMG_3215.webp" alt="Wood-fired Pizza" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Signature Seasoned Spuds</h3>
-              <p class="text-gray-400">Neapolitan style with house-made dough</p>
+              <p class="text-gray-400">Singature seasoned spuds ,crunchy on the outside and creamy on the in!</p>
             </div>
           </div>
         </div>
@@ -129,9 +129,9 @@
           <!-- <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0823.webp" alt="Event" class="w-full h-full object-cover" />
           </div> -->
-          <div class="w-full h-full flex-shrink-0">
+          <!-- <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/IMG_3430.webp" alt="Event" class="w-full h-full object-cover" />
-          </div>
+          </div> -->
           <!-- <div class="w-full h-full flex-shrink-0">
             <img src="/src/assets/images/naikulacarousel/DSC_0841.webp" alt="Event" class="w-full h-full object-cover" />
           </div> -->
@@ -146,13 +146,13 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div class="bg-gray-900 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="300">
             <i data-feather="music" class="text-orange-500 mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Live Music</h3>
-            <p class="text-gray-400">Every Friday & Saturday</p>
+            <h3 class="text-2xl font-bold mb-2">Quality Music</h3>
+            <p class="text-gray-400">Get your blood pumping with electrifying DJ performances</p>
           </div>
           <div class="bg-gray-900 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="400">
             <i data-feather="users" class="text-orange-500 mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Masterclasses</h3>
-            <p class="text-gray-400">Learn from our experts</p>
+            <h3 class="text-2xl font-bold mb-2">Unique BBQ experience</h3>
+            <p class="text-gray-400">Events with unique bbq experiences from our chefs</p>
           </div>
           <div class="bg-gray-900 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="500">
             <i data-feather="calendar" class="text-orange-500 mb-4"></i>
@@ -196,7 +196,7 @@
                   <h3 class="text-xl font-bold mb-1">Reservation</h3>
                   <p class="text-gray-400">(+254) 729 049 847</p>
                   <p class="text-gray-400">(+254) 740 337 043</p>
-                  <p class="text-gray-400">(+254) 799 209 905</p>
+                  <p class="text-gray-400">(+254) 799 209 095</p>
                 </div>
               </div>
             </div>
@@ -237,9 +237,9 @@
 
           <div class="flex space-x-6">
             <a href="#" class="text-gray-400 hover:text-orange-500 transition duration-300">
-              <i data-feather="facebook"></i>
+              <i data-feather="tiktok"></i>
             </a>
-            <a href="#" class="text-gray-400 hover:text-orange-500 transition duration-300">
+            <a href="https://www.instagram.com/naikula_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-orange-500 transition duration-300">
               <i data-feather="instagram"></i>
             </a>
             <a href="#" class="text-gray-400 hover:text-orange-500 transition duration-300">

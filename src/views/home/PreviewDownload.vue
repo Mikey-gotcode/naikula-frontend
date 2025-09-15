@@ -35,7 +35,7 @@
                 {{ selectedTicket.status || 'Unknown' }}
               </span>
               <h2 class="text-3xl font-extrabold text-gray-900 mt-2">
-                {{ selectedTicket.event_name || 'N/A' }}
+                {{ selectedTicket.mpesa_receipt_number || 'N/A' }}
               </h2>
             </div>
             <div class="text-right">
@@ -52,25 +52,28 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
             <div class="space-y-1">
-              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Attendee</p>
-              <p class="text-lg font-medium text-gray-900">{{ selectedTicket.attendee_name || 'N/A' }}</p>
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Event Name</p>
+              <p class="text-lg font-medium text-gray-900">NAIKULA 2.0</p>
+              <!-- <p class="text-lg font-medium text-gray-900">{{ selectedTicket.attendee_name || 'N/A' }}</p> -->
             </div>
             <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Venue</p>
-              <p class="text-lg font-medium text-gray-900">{{ selectedTicket.venue || 'N/A' }}</p>
+              <p class="text-lg font-medium text-gray-900">LA FERME, KABUKU - LIMURU</p>
             </div>
             <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</p>
-              <p class="text-lg font-medium text-gray-900">{{ formattedDate(selectedTicket.event_date) }}</p>
+              <p class="text-lg font-medium text-gray-900">1 ST NOVEMBER 2025</p>
+              <!-- <p class="text-lg font-medium text-gray-900">{{ formattedDate(selectedTicket.event_date) }}</p> -->
             </div>
             <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Time</p>
-              <p class="text-lg font-medium text-gray-900">{{ formattedTime(selectedTicket.event_date) }}</p>
+              <p class="text-lg font-medium text-gray-900">12:00 PM - 10:00 PM</p>
+              <!-- <p class="text-lg font-medium text-gray-900">{{ formattedTime(selectedTicket.event_date) }}</p> -->
             </div>
-            <div class="space-y-1">
+            <!-- <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Ticket Type</p>
               <p class="text-lg font-medium text-gray-900">{{ selectedTicket.ticket_type || 'N/A' }}</p>
-            </div>
+            </div> -->
             <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Price</p>
               <p class="text-lg font-medium text-gray-900">{{ selectedTicket.price ? `KES ${selectedTicket.price}` : 'N/A' }}</p>
@@ -123,7 +126,7 @@ import { ref, onMounted, watch, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { usePaymentsStore } from '@/store/payments.js'
 import apiClient, { checkPaymentStatus, fetchTicketByReceipt } from '@/api'
-import { jsPDF } from 'jspdf'
+//import { jsPDF } from 'jspdf'
 import feather from 'feather-icons'
 import AOS from 'aos'
 import 'aos/dist/aos.css'

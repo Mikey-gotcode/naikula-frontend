@@ -27,7 +27,8 @@
             <div class="text-gray-400 text-sm mb-4">
               <div class="flex items-center mb-1"><i class="fas fa-map-marker-alt mr-2"></i> {{ event.venue || event.location }}</div>
               <div class="flex items-center mb-1"><i class="far fa-calendar-alt mr-2"></i> {{ prettyDateRange }}</div>
-              <div class="flex items-center"><i class="far fa-clock mr-2"></i> {{ event.time || 'TBA' }}</div>
+              <div class="flex items-center"><i class="far fa-clock mr-2"></i> 12:00 PM - 10:00 PM</div>
+              <!-- <div class="flex items-center"><i class="far fa-clock mr-2"></i> {{ event.time || 'TBA' }}</div> -->
             </div>
 
             <h3 class="text-sm text-yellow-400 font-semibold mb-2">ABOUT</h3>
@@ -42,7 +43,7 @@
           <div class="bg-gray-900 rounded-lg p-6">
             <h2 class="text-lg font-semibold mb-4">Tickets Available</h2>
 
-            <!-- Single tickets -->
+            <!-- Single tickets
             <div>
               <h3 class="text-sm text-gray-400 font-semibold mb-3">Single Tickets</h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -83,11 +84,11 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Group tickets -->
             <div class="mt-6">
-              <h3 class="text-sm text-gray-400 font-semibold mb-3">Group Tickets</h3>
+              <!-- <h3 class="text-sm text-gray-400 font-semibold mb-3">Available Tickets</h3> -->
               <div v-if="groupTickets.length" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div
                   v-for="tk in groupTickets"
@@ -180,7 +181,7 @@ const errorMessage = ref(null)
 
 const event = ref({})
 const rawTickets = ref([]) // raw array from API
-const placeholderImage = '/src/assets/images/naikulaposter.png'
+const placeholderImage = '/src/assets/images/naikulaposter.webp'
 
 // qty map keyed by a representative key (e.g., ticket ID or group size)
 const qtyMap = ref({})

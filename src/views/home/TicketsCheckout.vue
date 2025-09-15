@@ -3,7 +3,7 @@
     <div class="max-w-4xl w-full">
       <div class="text-center mb-8">
         <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Complete Your Purchase</h1>
-        <p class="text-yellow-400 text-lg">Secure your tickets now - limited availability!</p>
+        <p class="text-orange-400 text-lg">Secure your tickets now - limited availability!</p>
       </div>
 
       <div class="flex flex-col lg:flex-row gap-8">
@@ -15,10 +15,10 @@
             <div class="flex justify-between items-start mb-6">
               <div>
                 <h2 class="text-2xl font-bold text-white">Your Order</h2>
-                <p class="text-yellow-400 mt-1" v-if="eventTitle">{{ eventTitle }}</p>
+                <p class="text-orange-400 mt-1" v-if="eventTitle">{{ eventTitle }}</p>
               </div>
               <div class="bg-gray-800 px-3 py-1 rounded-full">
-                <span class="text-yellow-400 font-semibold">Checkout</span>
+                <span class="text-orange-400 font-semibold">Checkout</span>
               </div>
             </div>
 
@@ -48,7 +48,7 @@
             <div class="mt-6 bg-black bg-opacity-30 rounded-lg p-4">
               <div class="flex items-center">
                 <div class="mr-3">
-                  <i class="fas fa-shield-alt text-yellow-400 text-xl"></i>
+                  <i class="fas fa-shield-alt text-orange-400 text-xl"></i>
                 </div>
                 <p class="text-gray-300 text-sm">Your payment details are securely encrypted</p>
               </div>
@@ -63,30 +63,30 @@
 
             <form @submit.prevent="onSubmit">
               <div class="mb-4">
-                <label class="block text-yellow-400 mb-2 font-medium">Full Name</label>
+                <label class="block text-orange-400 mb-2 font-medium">Full Name</label>
                 <input v-model="form.fullName" type="text" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Enter your full name" required />
               </div>
 
               <div class="mb-4">
-                <label class="block text-yellow-400 mb-2 font-medium">Email Address</label>
+                <label class="block text-orange-400 mb-2 font-medium">Email Address</label>
                 <input v-model="form.email" type="email" class="form-input w-full px-4 py-3 rounded-lg" placeholder="your.email@example.com" required />
               </div>
 
               <div class="mb-4">
-                <label class="block text-yellow-400 mb-2 font-medium">Phone Number</label>
+                <label class="block text-orange-400 mb-2 font-medium">Phone Number</label>
                 <div class="relative">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <span class="text-gray-400">+254</span>
                   </div>
-                  <input v-model="form.phone" type="tel" class="form-input w-full pl-14 px-4 py-3 rounded-lg" placeholder="712 345 678" required />
+                  <input v-model="form.phone" type="tel" class="form-input w-full pl-14 px-4 py-3 rounded-lg" placeholder="" required />
                 </div>
                 <p class="text-gray-400 text-sm mt-2">We'll send payment instructions to this number</p>
               </div>
 
               <div class="mb-6">
-                <label class="block text-yellow-400 mb-2 font-medium">Payment Method</label>
+                <label class="block text-orange-400 mb-2 font-medium">Payment Method</label>
                 <div class="payment-method active rounded-lg p-4 flex items-center">
-                  <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center mr-3">
+                  <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
                     <i class="fab fa-mpesa text-black text-xl"></i>
                   </div>
                   <div>
@@ -107,7 +107,7 @@
                           v-if="payments.lastPayment?.overall_status === 'paid'"
                           type="button"
                           @click="goToDownload"
-                          class="px-6 py-4 rounded-lg bg-yellow-500 text-black font-semibold hover:bg-yellow-400 transition"
+                          class="px-6 py-4 rounded-lg bg-orange-500 text-black font-semibold hover:bg-orange-400 transition"
                         >
                           Download Ticket
                         </button>
@@ -116,8 +116,8 @@
               <div class="mt-6 text-center">
                 <p class="text-gray-400 text-sm">
                   By completing your purchase, you agree to our
-                  <a href="#" class="text-yellow-400 hover:underline">Terms of Service</a> and
-                  <a href="#" class="text-yellow-400 hover:underline">Privacy Policy</a>
+                  <a href="#" class="text-orange-400 hover:underline">Terms of Service</a> and
+                  <a href="#" class="text-orange-400 hover:underline">Privacy Policy</a>
                 </p>
               </div>
             </form>
@@ -125,15 +125,15 @@
 
           <div class="mt-6 flex flex-wrap justify-center gap-4">
             <div class="flex items-center">
-              <i class="fas fa-lock text-yellow-400 mr-2"></i>
+              <i class="fas fa-lock text-orange-400 mr-2"></i>
               <span class="text-gray-400 text-sm">Secure Payment</span>
             </div>
             <div class="flex items-center">
-              <i class="fas fa-mobile-alt text-yellow-400 mr-2"></i>
+              <i class="fas fa-mobile-alt text-orange-400 mr-2"></i>
               <span class="text-gray-400 text-sm">Instant Confirmation</span>
             </div>
             <div class="flex items-center">
-              <i class="fas fa-ticket-alt text-yellow-400 mr-2"></i>
+              <i class="fas fa-ticket-alt text-orange-400 mr-2"></i>
               <span class="text-gray-400 text-sm">Digital Tickets</span>
             </div>
           </div>
@@ -366,7 +366,7 @@ onMounted(() => {
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 165, 0, 0.2); }
 .payment-method { border: 2px solid transparent; transition: all 0.2s ease; }
-.payment-method.active { border-color: #FFD700; background-color: rgba(255, 215, 0, 0.06); }
+.payment-method.active { border-color: #ffa600; background-color: rgba(255, 215, 0, 0.06); }
 .ticket-stamp {
   position: absolute; top: 20px; right: 20px; width: 80px; height: 80px;
   border-radius: 50%; background: radial-gradient(circle, #FFD700 40%, transparent 70%);
@@ -375,7 +375,7 @@ onMounted(() => {
 }
 .divider { height: 1px; background: linear-gradient(to right, transparent, #FFD700, transparent); }
 .gold-text { color: #FFD700; }
-.yellow-text { color: #FFA500; }
+.orange-text { color: #FFA500; }
 .pulse { animation: pulse 2s infinite; }
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.35); }

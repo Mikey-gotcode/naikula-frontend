@@ -15,7 +15,7 @@
         </div>
         <div class="hidden md:flex items-center space-x-6 text-sm text-gray-400">
           <router-link to="/" class="[hover:text-white]">HOME</router-link>
-          <router-link to="/login" class="[hover:text-white]">LOGIN</router-link>
+          <!-- <router-link to="/login" class="[hover:text-white]">LOGIN</router-link> -->
         </div>
       </div>
       <div class="flex items-center space-x-4">
@@ -71,9 +71,9 @@
         </div>
       </div>
 
-      <!-- Events -->
-      <div v-if="loading" class="text-center text-lg text-gray-400">
-        Loading events...
+      <div v-if="loading" class="text-center py-20">
+        <div class="inline-block loader mb-4"></div>
+        <div class="text-gray-400">Loading event...</div>
       </div>
 
       <div v-else-if="error" class="text-center text-red-400">
@@ -350,4 +350,16 @@ onMounted(fetchData)
 body {
   font-family: "Inter", sans-serif;
 }
+
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  border-top: 4px solid #facc15;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { 0%{ transform: rotate(0deg);} 100%{ transform: rotate(360deg);} }
+
 </style>
