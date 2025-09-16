@@ -236,8 +236,8 @@
           </div>
 
           <div class="flex space-x-6">
-            <a href="#" class="text-gray-400 hover:text-orange-500 transition duration-300">
-              <i data-feather="tiktok"></i>
+            <a href="https://www.tiktok.com/@_naikula_?_t=ZM-8z0H9fVhUM2&_r=1" class="text-gray-400 hover:text-orange-500 transition duration-300">
+             <i class="fab fa-tiktok"></i>
             </a>
             <a href="https://www.instagram.com/naikula_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-orange-500 transition duration-300">
               <i data-feather="instagram"></i>

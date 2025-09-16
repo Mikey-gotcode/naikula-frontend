@@ -2,7 +2,7 @@
   <div class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-tr from-black to-gray-900">
     <div class="max-w-4xl w-full">
       <div class="text-center mb-8">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Complete Your Purchase</h1>
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-2">Complete Your Purchase</h1>
         <p class="text-orange-400 text-lg">Secure your tickets now - limited availability!</p>
       </div>
 
