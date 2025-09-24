@@ -76,9 +76,9 @@
                 <label class="block text-orange-400 mb-2 font-medium">Phone Number</label>
                 <div class="relative">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <span class="text-gray-400">+254</span>
+                    <!-- <span class="text-gray-400">+254</span> -->
                   </div>
-                  <input v-model="form.phone" type="tel" class="form-input w-full pl-14 px-4 py-3 rounded-lg" placeholder="" required />
+                  <input v-model="form.phone" type="tel" class="form-input w-full pl-14 px-4 py-3 rounded-lg" placeholder="+254" required />
                 </div>
                 <p class="text-gray-400 text-sm mt-2">We'll send payment instructions to this number</p>
               </div>
