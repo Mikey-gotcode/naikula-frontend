@@ -53,16 +53,16 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
             <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Event Name</p>
-              <p class="text-lg font-medium text-gray-900">NAIKULA 2.0</p>
+              <p class="text-lg font-medium text-gray-900">NAIKULA 3.0</p>
               <!-- <p class="text-lg font-medium text-gray-900">{{ selectedTicket.attendee_name || 'N/A' }}</p> -->
             </div>
             <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Venue</p>
-              <p class="text-lg font-medium text-gray-900">LA FERME, KABUKU - LIMURU</p>
+              <p class="text-lg font-medium text-gray-900">DAIVIN AUTOCENTRE - KITCHEN 533</p>
             </div>
             <div class="space-y-1">
               <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</p>
-              <p class="text-lg font-medium text-gray-900">1 ST NOVEMBER 2025</p>
+              <p class="text-lg font-medium text-gray-900">13 TH DECEMBER 2025</p>
               <!-- <p class="text-lg font-medium text-gray-900">{{ formattedDate(selectedTicket.event_date) }}</p> -->
             </div>
             <div class="space-y-1">
@@ -99,16 +99,35 @@
 
 
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <button @click="downloadPDF(selectedTicket)"
-              class="w-full sm:w-auto px-6 py-3 rounded-full bg-indigo-600 text-white font-semibold flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors duration-200 shadow-md">
+            <button
+              @click="downloadPDF(selectedTicket)"
+              :disabled="!isPaid"
+              :class="[
+                'w-full sm:w-auto px-6 py-3 rounded-full font-semibold flex items-center justify-center gap-2 shadow-md transition-colors duration-200',
+                isPaid
+                  ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              ]"
+            >
               <i data-feather="download" class="w-5 h-5"></i>
               <span>Download Ticket</span>
             </button>
-            <button v-if="tickets.length > 1" @click="downloadAllGroupTickets"
-              class="w-full sm:w-auto px-6 py-3 rounded-full bg-indigo-50 text-indigo-700 font-semibold flex items-center justify-center gap-2 hover:bg-indigo-100 transition-colors duration-200">
+
+            <button
+              v-if="tickets.length > 1"
+              @click="downloadAllGroupTickets"
+              :disabled="!isPaid"
+              :class="[
+                'w-full sm:w-auto px-6 py-3 rounded-full font-semibold flex items-center justify-center gap-2 transition-colors duration-200',
+                isPaid
+                  ? 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100'
+                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              ]"
+            >
               <i data-feather="download" class="w-5 h-5"></i>
               <span>Download All Tickets</span>
             </button>
+
           </div>
         </div>
       </div>
@@ -138,6 +157,10 @@ import QRCode from 'qrcode'
 const router = useRouter()
 const route = useRoute()
 const payments = usePaymentsStore()
+
+const aggregate = computed(() => payments.getPayment(checkoutId.value))
+const isPaid = computed(() => aggregate.value?.overall_status === 'paid')
+
 const qrcode = ref(null)
 
 const tickets = ref([])          // populated ticket objects

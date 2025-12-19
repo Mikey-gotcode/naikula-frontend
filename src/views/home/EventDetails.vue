@@ -103,7 +103,7 @@
                     </div>
 
                     <div class="text-right">
-                      <div class="text-lg font-bold">KES {{ displayPriceUI(tk).toLocaleString()}}</div>
+                      <div class="text-lg font-bold">KES {{ displayPrice(tk).toLocaleString()}}</div>
                       <div class="text-xs text-gray-400">Per group</div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
             <div class="mt-4 md:mt-0 flex items-center space-x-3">
               <button @click="goToCart" class="px-5 py-2 bg-transparent border border-gray-700 rounded">View Cart</button>
               <button @click="proceedToCheckout" class="px-5 py-2 bg-yellow-400 text-black font-semibold rounded">Checkout</button>
-              <button @click="quickBuyCart" class="px-5 py-2 bg-indigo-600 text-white font-semibold rounded">Quick buy cart</button>
+              <!--<button @click="quickBuyCart" class="px-5 py-2 bg-indigo-600 text-white font-semibold rounded">Quick buy cart</button>-->
             </div>
           </div>
         </div>
@@ -181,7 +181,7 @@ const errorMessage = ref(null)
 
 const event = ref({})
 const rawTickets = ref([]) // raw array from API
-const placeholderImage = '/src/assets/images/naikulaposter.webp'
+const placeholderImage = '/src/assets/images/naikulaposter.png'
 
 // qty map keyed by a representative key (e.g., ticket ID or group size)
 const qtyMap = ref({})

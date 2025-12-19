@@ -288,8 +288,10 @@ async function saveEvent() {
       const created = res?.data ?? res
       if (created && created.id) events.value.unshift(created)
       else events.value.unshift({ id: Date.now(), ...payload })
+      closeModal()
     }
-    closeModal()
+    console.log("something went wrong")
+    //closeModal()
   } catch (err) {
     console.error('saveEvent failed', err)
     alert('Save failed — check console')

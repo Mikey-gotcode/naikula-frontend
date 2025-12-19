@@ -5,7 +5,7 @@ const BASE = import.meta.env.VITE_API_BASE_URL || 'https://www.naikula.co.ke'
 
 const api = axios.create({
   baseURL: `${BASE}/api`,
-  timeout: 20000,
+  timeout: 40000,
   headers: {
     Accept: 'application/json',
     'X-Requested-With': 'XMLHttpRequest',
@@ -16,7 +16,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const token = getToken()
-    if (token) {
+    if (token) {j
       config.headers = config.headers || {}
       config.headers.Authorization = token.startsWith('Bearer ')
         ? token

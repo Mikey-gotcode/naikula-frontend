@@ -44,32 +44,14 @@
             Events: <span class="text-white font-semibold">{{ events.length }}</span>
           </div>
           <div class="text-sm text-gray-400">
-            Available Tickets: <span class="text-white font-semibold">{{ totalTickets }}</span>
+            Tickets Available: LIMITED
+            <!--Tickets Available: <span class="text-white font-semibold">{{ totalTickets }}</span>-->
           </div>
         </div>
       </div>
 
       <!-- Filters -->
-      <div class="bg-gray-800 rounded-lg p-4 mb-12 flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
-        <div class="flex-grow grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-
-          <div class="flex items-center bg-gray-700 rounded-lg p-1.5 border border-gray-600 w-full">
-            <input type="date" v-model="filters.startDate" class="bg-transparent text-white p-1.5 w-full" />
-            <span class="text-gray-400 mx-2">→</span>
-            <input type="date" v-model="filters.endDate" class="bg-transparent text-white p-1.5 w-full" />
-          </div>
-        </div>
-
-        <div class="flex items-center space-x-4">
-          <button @click="applyFilters" class="bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-            FILTER
-          </button>
-          <button @click="resetFilters" class="bg-gray-700 text-gray-300 py-3 px-6 rounded-lg border border-gray-600">
-            Reset
-          </button>
-        </div>
-      </div>
+      
 
       <div v-if="loading" class="text-center py-20">
         <div class="inline-block loader mb-4"></div>
@@ -83,7 +65,7 @@
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div v-for="event in filteredEvents" :key="event.id" class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
           <div class="relative">
-            <img :src="event.imageUrl || placeholderImage" :alt="event.title" class="w-full h-48 object-cover" />
+            <img loading="eager|lazy":src="event.imageUrl || placeholderImage" :alt="event.title" class="w-full h-48 object-cover" />
             <div class="absolute top-2 left-2 bg-white text-gray-900 p-2 rounded-lg font-bold text-center">
               <span class="text-sm block">{{ event.date.day }}</span>
               <span class="text-xs block uppercase">{{ event.date.month }}</span>
@@ -136,7 +118,7 @@ const loading = ref(true);
 const error = ref(false);
 const errorMessage = ref(null);
 
-const placeholderImage = "/src/assets/images/naikulaposter.webp";
+const placeholderImage = "/src/assets/images/naikulaposter.png";
 
 /**
  * Normalize helpers

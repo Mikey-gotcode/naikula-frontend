@@ -62,7 +62,7 @@
 
       <div class="absolute bottom-0 w-full p-4 border-t">
         <div class="flex items-center">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" class="w-10 h-10 rounded-full">
+          <img loading="eager|lazy"src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" class="w-10 h-10 rounded-full">
           <div class="ml-3">
             <p class="font-medium">John Admin</p>
             <p class="text-gray-500 text-sm">Administrator</p>
@@ -89,7 +89,7 @@
             </button>
             <div class="relative">
               <button class="flex items-center">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" class="w-8 h-8 rounded-full">
+                <img loading="eager|lazy"src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" class="w-8 h-8 rounded-full">
               </button>
             </div>
           </div>
@@ -275,7 +275,7 @@
                 <div class="space-y-3">
                   <div v-for="admin in admins" :key="admin.id" class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
                     <div class="flex items-center">
-                      <img :src="admin.image" alt="Admin" class="w-8 h-8 rounded-full">
+                      <img loading="eager|lazy":src="admin.image" alt="Admin" class="w-8 h-8 rounded-full">
                       <div class="ml-3">
                         <p class="font-medium">{{ admin.name }}</p>
                         <p class="text-gray-500 text-sm">{{ admin.role }}</p>

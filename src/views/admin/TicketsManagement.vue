@@ -262,7 +262,7 @@
         <div class="mt-6 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
           <div class="flex-shrink-0">
             <!-- Always show image src if present (backend returns PNG or SVG data URI) -->
-            <img 
+            <img loading="eager|lazy"
               v-if="qrSrc" 
               :src="qrSrc" 
               alt="QR code" 
