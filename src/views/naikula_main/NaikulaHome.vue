@@ -60,7 +60,7 @@
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row items-center gap-12">
           <div class="md:w-1/2" data-aos="fade-right">
-            <img loading="eager|lazy"src="/src/assets/images/naikulaphotos/IMG_3246.webp" alt="Grilling Experience" class="rounded-lg shadow-2xl w-full" />
+            <img loading="eager"src="/src/assets/images/naikulaphotos/IMG_3246.webp" alt="Grilling Experience" class="rounded-lg shadow-2xl w-full" />
           </div>
           <div class="md:w-1/2" data-aos="fade-left">
             <h2 class="text-4xl font-bold mb-6">The Art of <span class="flame-text">Smoking</span></h2>
@@ -85,7 +85,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" ref="galleryRoot">
           <!-- Gallery items -->
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
-            <img loading="eager|lazy"src="/src/assets/images/naikulaphotos/IMG_3403.webp" alt="Smoked Ribs" class="w-full h-64 object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulaphotos/IMG_3403.webp" alt="Smoked Ribs" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Smoked Ribs</h3>
               <p class="text-gray-400">Pork ribs slow-cooked to perfection with our signature rub</p>
@@ -93,7 +93,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
-            <img loading="eager|lazy"src="/src/assets/images/naikulaphotos/DSC_0803.webp" alt="Grilled Vegetables" class="w-full h-64 object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulaphotos/DSC_0803.webp" alt="Grilled Vegetables" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">BBQ Sauce Dipped Choma Sausages</h3>
               <p class="text-gray-400">Smoky choma sausages dipped in our signature BBQ sauce</p>
@@ -101,7 +101,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="300">
-            <img loading="eager|lazy"src="/src/assets/images/naikulaphotos/IMG_3347.webp" alt="Pulled Pork" class="w-full h-64 object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulaphotos/IMG_3347.webp" alt="Pulled Pork" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Smoky Vibes 254..🔥🇰🇪</h3>
               <p class="text-gray-400">Crispy skinned, smoked to perfections chicken served with our signature sauces </p>
@@ -109,7 +109,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="400">
-            <img loading="eager|lazy"src="/src/assets/images/naikulaphotos/IMG_3370.webp" alt="Smoked Brisket" class="w-full h-64 object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulaphotos/IMG_3370.webp" alt="Smoked Brisket" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Family combo meal</h3>
               <p class="text-gray-400">Full chicken with serving of golden brown spuds</p>
@@ -117,7 +117,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="500">
-            <img loading="eager|lazy"src="/src/assets/images/naikulaphotos/IMG_3388.webp" alt="Grilled Seafood" class="w-full h-64 object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulaphotos/IMG_3388.webp" alt="Grilled Seafood" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Hog Father🐖</h3>
               <p class="text-gray-400">Trust the flavour of the Hog Father🐖..trust naikula!🔥</p>
@@ -125,7 +125,7 @@
           </div>
 
           <div class="gallery-item overflow-hidden rounded-xl shadow-2xl" data-aos="zoom-in" data-aos-delay="600">
-            <img loading="eager|lazy"src="/src/assets/images/naikulaphotos/IMG_3215.webp" alt="Wood-fired Pizza" class="w-full h-64 object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulaphotos/IMG_3215.webp" alt="Wood-fired Pizza" class="w-full h-64 object-cover" />
             <div class="p-6 bg-gray-800">
               <h3 class="text-2xl font-bold mb-2">Signature Seasoned Spuds</h3>
               <p class="text-gray-400">Singature seasoned spuds ,crunchy on the outside and creamy on the in!</p>
@@ -143,31 +143,31 @@
       <div class="absolute inset-0 overflow-hidden">
         <div class="events-carousel absolute inset-0 flex transition-transform duration-1000" ref="eventsCarouselRef">
           <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0714.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0714.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <!-- <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0728.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0728.webp" alt="Event" class="w-full h-full object-cover" />
           </div> -->
           <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0762.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0762.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <!-- <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0723.webp" alt="Event" class="w-full h-full object-cover" />
           </div> -->
           <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0792.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0792.webp" alt="Event" class="w-full h-full object-cover" />
           </div>
           <!-- <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0823.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0823.webp" alt="Event" class="w-full h-full object-cover" />
           </div> -->
           <!-- <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/IMG_3430.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/IMG_3430.webp" alt="Event" class="w-full h-full object-cover" />
           </div> -->
           <!-- <div class="w-full h-full flex-shrink-0">
-            <img loading="eager|lazy"src="/src/assets/images/naikulacarousel/DSC_0841.webp" alt="Event" class="w-full h-full object-cover" />
+            <img loading="eager"src="/src/assets/images/naikulacarousel/DSC_0841.webp" alt="Event" class="w-full h-full object-cover" />
           </div> -->
         </div>
       </div>

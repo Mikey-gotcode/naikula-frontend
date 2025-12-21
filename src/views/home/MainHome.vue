@@ -65,7 +65,7 @@
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div v-for="event in filteredEvents" :key="event.id" class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
           <div class="relative">
-            <img loading="eager|lazy":src="event.imageUrl || placeholderImage" :alt="event.title" class="w-full h-48 object-cover" />
+            <img loading="eager":src="event.imageUrl || placeholderImage" :alt="event.title" class="w-full h-48 object-cover" />
             <div class="absolute top-2 left-2 bg-white text-gray-900 p-2 rounded-lg font-bold text-center">
               <span class="text-sm block">{{ event.date.day }}</span>
               <span class="text-xs block uppercase">{{ event.date.month }}</span>

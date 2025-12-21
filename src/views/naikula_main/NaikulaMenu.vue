@@ -154,7 +154,7 @@ onMounted(() => {
 
     const pageFront = document.createElement("div");
     pageFront.className = "page-content page-front";
-    pageFront.innerHTML = `<img loading="eager|lazy"src="${src}" alt="Menu page ${pageIndex}" class="w-full h-full object-cover">`;
+    pageFront.innerHTML = `<img loading="eager"src="${src}" alt="Menu page ${pageIndex}" class="w-full h-full object-cover">`;
 
     page.appendChild(pageFront);
     pageWrapper.appendChild(page);
